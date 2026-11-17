@@ -1,2 +1,34 @@
-# dry-bean-variety-classifier
-A reproducible multiclass benchmark for classifying dry-bean varieties from measured shape features.
+# Dry Bean Variety Classifier
+
+Classify seven dry-bean varieties using measured geometric and shape features.
+
+## Dataset
+
+[UCI Dry Bean dataset](https://archive.ics.uci.edu/dataset/602/dry%2Bbean) (dataset ID 602), 13,611 records. The source is public and is fetched by the runner; the raw dataset is not committed.
+
+## Run
+
+```bash
+python -m pip install -r requirements.txt
+python main.py --output-dir artifacts
+```
+
+The runner saves `artifacts/metrics.json`, `artifacts/holdout_predictions.csv`, and `artifacts/model.joblib`. For SMS, the UCI CC BY 4.0 archive is downloaded to the ignored `data/` cache because the repository's importer does not currently expose that dataset. The raw messages are never written to the report.
+
+## Holdout results
+
+A stratified random 75/25 split (seed 42) is used. Numeric inputs are median-imputed; the random-forest classifier uses 400 trees and balanced subsampling. random 75/25 holdout; seed=42.
+
+| Accuracy | Balanced accuracy | Macro F1 | Weighted F1 | Majority baseline accuracy |
+|---:|---:|---:|---:|---:|
+| 0.920 | 0.932 | 0.933 | 0.920 | 0.261 |
+
+Full aggregate metrics and the exact split seed are in [`reports/benchmark.json`](reports/benchmark.json).
+
+## Limits
+
+This benchmark covers image-derived measurements from a limited set of varieties and sources; the random split does not test new farms, cameras, or harvest conditions. These are one-time benchmark results, not service-level, production, or causal claims.
+
+## Reproducibility
+
+The model and split use seed 42. Re-running downloads source data from UCI and regenerates local artifacts. Model binaries, raw inputs, and row-level predictions are excluded from this public repository.
