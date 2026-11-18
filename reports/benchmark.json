@@ -87,9 +87,11 @@
         "f1-score": 0.9203663329481033,
         "support": 3403
       }
-    }
+    },
+    "log_loss": 0.24730781374352237,
+    "macro_ovr_roc_auc": 0.9940423512906905
   },
-  "limitations": "Public benchmark; holdout results do not establish production performance.",
+  "limitations": "Public UCI tabular benchmark with image-derived measurements. Random split does not test new farms, cameras, harvest conditions, or deployment drift. Log loss and ROC-AUC are reported, but no independent probability-calibration analysis is included.",
   "source_url": "https://archive.ics.uci.edu/dataset/602",
   "generated_at": "2026-11-17",
   "artifacts_published": [
