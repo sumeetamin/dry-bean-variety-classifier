@@ -19,11 +19,11 @@ The runner saves metrics, holdout predictions, and a reusable model in the ignor
 
 A stratified random 75/25 split (seed 42) is used. Numeric inputs are median-imputed; the random-forest classifier uses 400 trees and balanced subsampling.
 
-| Accuracy | Balanced accuracy | Macro F1 | Weighted F1 | Majority baseline accuracy |
-|---:|---:|---:|---:|---:|
-| 0.920 | 0.932 | 0.933 | 0.920 | 0.261 |
+| Accuracy | Balanced accuracy | Macro F1 | Weighted F1 | Log loss | Macro OVR ROC-AUC | Majority baseline accuracy |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.920 | 0.932 | 0.933 | 0.920 | 0.247 | 0.994 | 0.261 |
 
-Full aggregate metrics and the exact split seed are in [`reports/benchmark.json`](reports/benchmark.json).
+Log loss and ROC-AUC describe probabilities, but no separate calibration dataset or calibration correction is used. Full aggregate metrics and the exact split seed are in [`reports/benchmark.json`](reports/benchmark.json).
 
 ## Limits
 
